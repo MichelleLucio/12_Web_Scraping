@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mission to Mars</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='template.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Add Jumbotron to Header -->
+        <div class="jumbotron text-center">
+            <h1>Mission to Mars</h1>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+            </p>
+        </div>
+
+        <!-- Add section for Mars News -->
+        <div class="row" id="mars-news">
+            <div class="col-md-12">
+              <h2>Latest Mars News</h2>
+              <hr>
+              <h5 class="font-weight-bold">{{ mars_data.news_title }}</h5>
+              <p>{{ mars_data.news_body }}</p>
+            </div>
+          </div>
+
+        <!-- Section for Featured Image and Facts table --> 
+        <div class="row" id="mars-featured-image">
+            <div class="col-md-8">
+                <h2> Featured Image </h2>
+                <hr>
+            <img src="{{ mars_data.featured_image }}" style = "width: 100%;" class="img-responsive" alt="Featured Image"/>
+            </div>
+            <div class="card">
+                    <div class="card-body">
+                        <h2>Current Mars Weather</h2>
+                        <p>{{ mars_data.mars_weather }}</p>
+                    </div>
+            </div>
+            
+            <!-- Mars Facts -->
+            <div class="col-md-4">
+                <hr>
+                <h3>Mars Facts</h3>
+                <hr>
+                {{ mars_data.mars_fact_table|safe }}
+                <hr>
+         </div>
+
+         <!-- Empty row to separate hemispheres title -->
+        <div class="row">
+            <div class="col-md-12">
+                <p></p>
+            </div>
+        </div>
+
+        <!-- Section for Mars Hemispheres Images -->
+        <div class="col-md-12">
+        <div class="jumbotron text-center">
+            <h3>Mars Hemispheres</h3>
+        </div>
+        <div class="row" id="mars-hemispheres">
+            <!-- Loop through the list of Mars hemispheres -->
+            {% for each in mars_data.mars_hemispheres %}
+                <div class="col-xs-12 col-md-6 d-flex justify-content-center">
+                    <div class="card mt-5" style="width: 35rem;">
+                    <img src={{ each.image_url }} class="card-img-top rounded mx-auto d-block img-fluid" alt="...">
+                    <div class="card-body">
+                    <p class="card-text font-weight-bold">{{ each.name }}</p>
+                  </div>
+                </div>
+              </div>
+            {%endfor%}
+        </div>
+     </div></div>
+     <script>
+        let tableElement = document.getElementsByClassName("dataframe");
+        tableElement[0].classList.add("table-striped", "table-bordered", "table-hover");
+    </script>
+
+</body>
+</html>
