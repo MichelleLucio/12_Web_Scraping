@@ -1,9 +1,20 @@
 # Web Scraping Homework - Mission to Mars
 
-![mission_to_mars1](final_app_images/screen_image_1.PNG)
+![mission_to_mars](Images/mission_to_mars.png)
 
 In this assignment, you will build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. The following outlines what you need to do.
 
+### Before You Begin
+
+1. Create a new repository for this project called `web-scraping-challenge`. **Do not add this homework to an existing repository**.
+
+2. Clone the new repository to your computer.
+
+3. Inside your local git repository, create a directory for the web scraping challenge. Use a folder name to correspond to the challenge: **Missions_to_Mars**.
+
+4. Add your notebook files to this folder as well as your flask app.
+
+5. Push the above changes to GitHub or GitLab.
 
 ## Step 1 - Scraping
 
@@ -15,7 +26,12 @@ Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, an
 
 * Scrape the [NASA Mars News Site](https://mars.nasa.gov/news/) and collect the latest News Title and Paragraph Text. Assign the text to variables that you can reference later.
 
-![mission_to_mars1](final_app_images/screen_image_1.PNG)
+```python
+# Example:
+news_title = "NASA's Next Mars Mission to Investigate Interior of Red Planet"
+
+news_p = "Preparation of NASA's next spacecraft to Mars, InSight, has ramped up this summer, on course for launch next May from Vandenberg Air Force Base in central California -- the first interplanetary launch in history from America's West Coast."
+```
 
 ### JPL Mars Space Images - Featured Image
 
@@ -27,7 +43,10 @@ Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, an
 
 * Make sure to save a complete url string for this image.
 
-![mission_to_mars2](final_app_images/screen_image_2.PNG)
+```python
+# Example:
+featured_image_url = 'https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA16225_hires.jpg'
+```
 
 ### Mars Weather
 
@@ -35,15 +54,17 @@ Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, an
 * **Note: Be sure you are not signed in to twitter, or scraping may become more difficult.**
 * **Note: Twitter frequently changes how information is presented on their website. If you are having difficulty getting the correct html tag data, consider researching Regular Expression Patterns and how they can be used in combination with the .find() method.**
 
-![mission_to_mars3](final_app_images/screen_image_3.PNG)
+
+```python
+# Example:
+mars_weather = 'Sol 1801 (Aug 30, 2017), Sunny, high -21C/-5F, low -80C/-112F, pressure at 8.82 hPa, daylight 06:09-17:55'
+```
 
 ### Mars Facts
 
 * Visit the Mars Facts webpage [here](https://space-facts.com/mars/) and use Pandas to scrape the table containing facts about the planet including Diameter, Mass, etc.
 
 * Use Pandas to convert the data to a HTML table string.
-
-![mission_to_mars4](final_app_images/screen_image_4.PNG)
 
 ### Mars Hemispheres
 
@@ -55,10 +76,15 @@ Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, an
 
 * Append the dictionary with the image url string and the hemisphere title to a list. This list will contain one dictionary for each hemisphere.
 
-![mission_to_mars5](final_app_images/screen_image_5.PNG)
-![mission_to_mars6](final_app_images/screen_image_6.PNG)
-![mission_to_mars7](final_app_images/screen_image_7.PNG)
-
+```python
+# Example:
+hemisphere_image_urls = [
+    {"title": "Valles Marineris Hemisphere", "img_url": "..."},
+    {"title": "Cerberus Hemisphere", "img_url": "..."},
+    {"title": "Schiaparelli Hemisphere", "img_url": "..."},
+    {"title": "Syrtis Major Hemisphere", "img_url": "..."},
+]
+```
 
 - - -
 
@@ -76,7 +102,20 @@ Use MongoDB with Flask templating to create a new HTML page that displays all of
 
 * Create a template HTML file called `index.html` that will take the mars data dictionary and display all of the data in the appropriate HTML elements. Use the following as a guide for what the final product should look like, but feel free to create your own design.
 
+![final_app_part1.png](Images/final_app_part1.png)
+![final_app_part2.png](Images/final_app_part2.png)
+
 - - -
+
+## Step 3 - Submission
+
+To submit your work to BootCampSpot, create a new GitHub repository and upload the following:
+
+1. The Jupyter Notebook containing the scraping code used.
+
+2. Screenshots of your final application.
+
+3. Submit the link to your new repository to BootCampSpot.
 
 ## Hints
 
@@ -85,3 +124,7 @@ Use MongoDB with Flask templating to create a new HTML page that displays all of
 * Use Pymongo for CRUD applications for your database. For this homework, you can simply overwrite the existing document each time the `/scrape` url is visited and new data is obtained.
 
 * Use Bootstrap to structure your HTML template.
+
+### Copyright
+
+Trilogy Education Services © 2019. All Rights Reserved.
